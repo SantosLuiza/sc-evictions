@@ -1,0 +1,38 @@
+---
+title: "Evictions"
+author: "Luiza Santos"
+date: "`r Sys.Date()`"
+output: 
+  github_document:
+    toc: true
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+```{r message=FALSE, warning=FALSE}
+# Libraries
+library(tidyverse)
+library(here)
+
+# Parameters
+data <- here::here("data/evictions.rds")
+#===============================================================================
+
+# Code
+
+data <- read_rds(data)
+```
+
+## EDA
+
+```{r}
+
+data %>% 
+  drop_na(evictions) %>% 
+  arrange(desc(evictions)) %>% 
+  top_n(1)
+
+```
+
